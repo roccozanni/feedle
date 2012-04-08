@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'feedle'
+require 'yaml'
+
+
+config = ARGV[0]
+
+if config.nil?
+	puts 'No config file specified'
+	exit
+end
+
+if ! File.exist?(config)
+	puts "Cannot read configuration file at: #{config}"
+	exit
+end
+
+configuration = nil
+begin
+	configuration = YAML.load_file(config)
+rescue
+	puts "Unable to parse YML configuration file at: #{config}"
+	exit
+end
+
+
+Feedle.run configuration
