@@ -57,18 +57,21 @@ class Feedle
 		end
 
 		# Generate feed HTML file
-		puts "Reading RSS feeds"
+		puts "Reading RSS feeds..."
 		kfOutput = '/tmp/feeds.html'
-		#kf = KindleFeeds.new(kfConfig)
-		#kf.generate_html(kfOutput)
+		kf = KindleFeeds.new(kfConfig)
+		kf.generate_html(kfOutput)
 
 		# Send created HTML file via email
 		puts "Sending content to Kindle..."
 		m = Mailer.new(config)
 		m.send(kfOutput)
 		
+		puts "Cleaning temporary files..."
 		# Delete created file
 		File.delete(kfOutput)
+
+		puts "Done!"
 
 	end
 end

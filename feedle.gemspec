@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = 'feedle'
-  s.version  = '0.0.2'
+  s.version  = '0.0.3'
   s.date     = '2012-04-08'
   s.summary  = 'Ruby RSS to Kindle'
   s.description = <<-EOS
